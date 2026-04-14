@@ -56,8 +56,8 @@ globalconnect-unifor/
 
 ## 👥 Equipe
 
-João Gabriel
-Larah Queiroz
-Matheus Albuquerque
+- João Gabriel
+- Larah Queiroz
+- Matheus Albuquerque
 
 Desenvolvido por estudantes do curso de Análise e Desenvolvimento de Sistemas — Unifor (2025.1)
