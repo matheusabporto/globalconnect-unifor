@@ -49,11 +49,15 @@ globalconnect-unifor/
 
 ## 🛠️ Ferramentas Utilizadas
 
-- Modelagem UML: Draw.io / Lucidchart
+- Modelagem UML: Draw.io / Lucidchart (Em análise)
 - Prototipação: Figma
 - Documentação: Markdown
 - Versionamento: Git + GitHub
 
 ## 👥 Equipe
+
+João Gabriel
+Larah Queiroz
+Matheus Albuquerque
 
 Desenvolvido por estudantes do curso de Análise e Desenvolvimento de Sistemas — Unifor (2025.1)
