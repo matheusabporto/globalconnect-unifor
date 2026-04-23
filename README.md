@@ -38,7 +38,7 @@ globalconnect-unifor/
 |---|-----------|-------|--------|
 | E1 | Lista de Stakeholders | 13–17/04 | 🔄 Em andamento |
 | E2 | Roteiro de Entrevistas | 13–17/04 | 🔄 Em andamento |
-| E3 | Matriz de Dores | 20–24/04 | ⏳ Pendente |
+| E3 | Matriz de Dores | 20–24/04 | 🔄 Em andamento |
 | E4 | Statement of Position + Mapa de Jornada As-Is | 27/04–01/05 | ⏳ Pendente |
 | E5 | Backlog Inicial MoSCoW | 04–08/05 | ⏳ Pendente |
 | E6 | Protótipo de Baixa Fidelidade | 11–15/05 | ⏳ Pendente |
