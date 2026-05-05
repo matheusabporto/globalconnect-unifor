@@ -36,11 +36,11 @@ globalconnect-unifor/
 
 | # | Entregável | Prazo | Status |
 |---|-----------|-------|--------|
-| E1 | Lista de Stakeholders | 13–17/04 | 🔄 Em andamento |
-| E2 | Roteiro de Entrevistas | 13–17/04 | 🔄 Em andamento |
-| E3 | Matriz de Dores | 20–24/04 | 🔄 Em andamento |
-| E4 | Statement of Position + Mapa de Jornada As-Is | 27/04–01/05 | ⏳ Pendente |
-| E5 | Backlog Inicial MoSCoW | 04–08/05 | ⏳ Pendente |
+| E1 | Lista de Stakeholders | 13–17/04 | ✅ Concluído |
+| E2 | Roteiro de Entrevistas | 13–17/04 | ✅ Concluído |
+| E3 | Matriz de Dores | 20–24/04 | ✅ Concluído |
+| E4 | Statement of Position + Mapa de Jornada As-Is | 27/04–01/05 | ✅ Concluído |
+| E5 | Backlog Inicial MoSCoW | 04–08/05 | ✅ Concluído |
 | E6 | Protótipo de Baixa Fidelidade | 11–15/05 | ⏳ Pendente |
 | E7 | Backlog Refinado (User Stories) | 18–22/05 | ⏳ Pendente |
 | E8 | Protótipo de Alta Fidelidade (Figma) | 25–29/05 | ⏳ Pendente |
