@@ -41,7 +41,7 @@ globalconnect-unifor/
 | E3 | Matriz de Dores | 20–24/04 | ✅ Concluído |
 | E4 | Statement of Position + Mapa de Jornada As-Is | 27/04–01/05 | ✅ Concluído |
 | E5 | Backlog Inicial MoSCoW | 04–08/05 | ✅ Concluído |
-| E6 | Protótipo de Baixa Fidelidade | 11–15/05 | ⏳ Pendente |
+| E6 | Protótipo de Baixa Fidelidade | 11–15/05 | ✅ Concluído |
 | E7 | Backlog Refinado (User Stories) | 18–22/05 | ⏳ Pendente |
 | E8 | Protótipo de Alta Fidelidade (Figma) | 25–29/05 | ⏳ Pendente |
 | E9 | Apresentação Final + Canvas MVP | 01–05/06 | ⏳ Pendente |
