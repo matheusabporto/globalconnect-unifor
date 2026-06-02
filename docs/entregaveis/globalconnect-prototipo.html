@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlobalConnect Unifor — Mobilidade Acadêmica Internacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   GLOBALCONNECT UNIFOR — PROTÓTIPO DE ALTA FIDELIDADE (E8)
+   Paleta Ocean Gradient · Editorial Moderno
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --c-dark:   #065A82;
+  --c-med:    #1C7293;
+  --c-accent: #02C39A;
+  --c-light:  #E8F4F8;
+  --c-bg:     #FAFCFD;
+  --c-text:   #1A2B35;
+  --c-muted:  #4A6572;
+  --c-border: #D5E6EF;
+  --c-warn:   #C0392B;
+  --c-warn2:  #E67E22;
+  --c-ok:     #27AE60;
+  --c-white:  #FFFFFF;
+
+  --shadow-sm: 0 1px 3px rgba(6, 90, 130, 0.06), 0 1px 2px rgba(6, 90, 130, 0.04);
+  --shadow-md: 0 4px 12px rgba(6, 90, 130, 0.08), 0 2px 4px rgba(6, 90, 130, 0.04);
+  --shadow-lg: 0 12px 32px rgba(6, 90, 130, 0.12), 0 4px 8px rgba(6, 90, 130, 0.06);
+  --shadow-xl: 0 24px 64px rgba(6, 90, 130, 0.16);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --transition: 280ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 480ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-body:    'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --container: 1240px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--c-text);
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--c-dark);
+}
+
+/* ─── HEADER ───────────────────────────────────────────────── */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--c-border);
+}
+
+.header-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--c-dark) 0%, var(--c-med) 100%);
+  display: grid;
+  place-items: center;
+  color: var(--c-accent);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.05em;
+  box-shadow: 0 2px 8px rgba(6, 90, 130, 0.25);
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--c-dark);
+}
+
+.brand-tag {
+  font-size: 11px;
+  color: var(--c-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nav-btn {
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c-muted);
+  transition: var(--transition);
+  position: relative;
+}
+
+.nav-btn:hover {
+  color: var(--c-dark);
+  background: var(--c-light);
+}
+
+.nav-btn.active {
+  color: var(--c-dark);
+  background: var(--c-light);
+  font-weight: 600;
+}
+
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+}
+
+.user-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px 8px 8px;
+  background: var(--c-light);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.user-chip:hover { background: #d8eaf2; transform: translateY(-1px); }
+
+.user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--c-dark);
+  color: var(--c-accent);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-text);
+}
+
+.mobile-menu-btn {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--c-light);
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── MAIN / SCREENS ───────────────────────────────────────── */
+
+main { min-height: calc(100vh - 80px); }
+
+.screen { display: none; animation: fadeIn 400ms cubic-bezier(0.16, 1, 0.3, 1); }
+.screen.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* ─── HOME / PORTAL ────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  background: linear-gradient(135deg, var(--c-dark) 0%, #024d70 60%, #022e44 100%);
+  color: white;
+  padding: 100px 0 140px;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(2, 195, 154, 0.15) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(28, 114, 147, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 16px 8px 8px;
+  background: rgba(2, 195, 154, 0.12);
+  border: 1px solid rgba(2, 195, 154, 0.3);
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c-accent);
+  margin-bottom: 28px;
+  animation: slideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-badge-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--c-accent);
+  position: relative;
+}
+
+.hero-badge-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  opacity: 0.4;
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.4; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.hero h1 {
+  color: white;
+  font-size: clamp(40px, 5.5vw, 68px);
+  font-weight: 500;
+  line-height: 1.05;
+  margin-bottom: 28px;
+  letter-spacing: -0.03em;
+  animation: slideUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 80ms both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-accent);
+  position: relative;
+}
+
+.hero-lead {
+  font-size: 19px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 580px;
+  margin-bottom: 40px;
+  animation: slideUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 160ms both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: slideUp 700ms cubic-bezier(0.16, 1, 0.3, 1) 240ms both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 28px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  transition: var(--transition);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--c-accent);
+  color: var(--c-dark);
+}
+
+.btn-primary:hover {
+  background: #00d6a8;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(2, 195, 154, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-dark {
+  background: var(--c-dark);
+  color: white;
+}
+
+.btn-dark:hover {
+  background: #024d70;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(6, 90, 130, 0.3);
+}
+
+.btn-ghost {
+  background: var(--c-light);
+  color: var(--c-dark);
+}
+
+.btn-ghost:hover {
+  background: #d8eaf2;
+  transform: translateY(-1px);
+}
+
+.btn-arrow {
+  transition: transform var(--transition);
+  font-size: 18px;
+}
+
+.btn:hover .btn-arrow { transform: translateX(4px); }
+
+/* Hero visual card */
+.hero-visual {
+  position: relative;
+  animation: slideUp 800ms cubic-bezier(0.16, 1, 0.3, 1) 320ms both;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: var(--shadow-xl);
+}
+
+.hero-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-card-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 500;
+  color: white;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 12px;
+  background: rgba(2, 195, 154, 0.15);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-accent);
+}
+
+.status-pill-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--c-accent);
+}
+
+.hero-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hero-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.hero-step:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
+}
+
+.hero-step-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.hero-step-icon.done {
+  background: var(--c-accent);
+  color: var(--c-dark);
+}
+
+.hero-step-icon.active {
+  background: rgba(2, 195, 154, 0.15);
+  color: var(--c-accent);
+  border: 1.5px solid var(--c-accent);
+}
+
+.hero-step-icon.pending {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-step-info {
+  flex: 1;
+}
+
+.hero-step-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+}
+
+.hero-step-meta {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Stats strip */
+.stats {
+  background: var(--c-white);
+  border-bottom: 1px solid var(--c-border);
+  margin-top: -1px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  padding: 48px 0;
+}
+
+.stat {
+  padding: 0 32px;
+  border-left: 1px solid var(--c-border);
+  text-align: left;
+}
+
+.stat:first-child { border-left: none; }
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--c-dark);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.stat-number em {
+  color: var(--c-accent);
+  font-style: normal;
+}
+
+.stat-label {
+  font-size: 14px;
+  color: var(--c-muted);
+  font-weight: 500;
+}
+
+/* Section base */
+.section {
+  padding: 100px 0;
+}
+
+.section-light { background: var(--c-light); }
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 64px;
+  gap: 40px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 500;
+  max-width: 700px;
+}
+
+.section-title em { font-style: italic; color: var(--c-med); font-weight: 400; }
+
+.section-sub {
+  font-size: 17px;
+  color: var(--c-muted);
+  max-width: 500px;
+  line-height: 1.6;
+}
+
+/* How it works steps */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.step-card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--c-accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition-slow);
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: transparent;
+}
+
+.step-card:hover::before { transform: scaleX(1); }
+
+.step-num {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-accent);
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.step-card p {
+  font-size: 15px;
+  color: var(--c-muted);
+  line-height: 1.55;
+}
+
+/* Destinations */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.dest-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--c-border);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.dest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.dest-image {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dest-image-1 { background: linear-gradient(135deg, #DC2626 0%, #FCD34D 100%); }
+.dest-image-2 { background: linear-gradient(135deg, #1E40AF 0%, #DBEAFE 100%); }
+.dest-image-3 { background: linear-gradient(135deg, #065F46 0%, #FEF3C7 100%); }
+.dest-image-4 { background: linear-gradient(135deg, #7C2D12 0%, #FED7AA 100%); }
+.dest-image-5 { background: linear-gradient(135deg, #1F2937 0%, #F87171 100%); }
+.dest-image-6 { background: linear-gradient(135deg, #B45309 0%, #BFDBFE 100%); }
+
+.dest-flag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-dark);
+}
+
+.dest-info {
+  padding: 24px;
+}
+
+.dest-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--c-dark);
+  margin-bottom: 6px;
+}
+
+.dest-city {
+  font-size: 14px;
+  color: var(--c-muted);
+  margin-bottom: 16px;
+}
+
+.dest-meta {
+  display: flex;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--c-border);
+  font-size: 13px;
+  color: var(--c-muted);
+}
+
+.dest-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─── ELEGIBILIDADE ──────────────────────────────────────── */
+
+.page-header {
+  background: white;
+  padding: 60px 0 48px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.breadcrumb {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb a { transition: color var(--transition); }
+.breadcrumb a:hover { color: var(--c-dark); }
+.breadcrumb-sep { color: var(--c-border); }
+
+.page-title {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.page-sub {
+  font-size: 17px;
+  color: var(--c-muted);
+  max-width: 700px;
+}
+
+.elegi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding: 48px 0 100px;
+}
+
+.panel {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  padding: 36px;
+  box-shadow: var(--shadow-sm);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--c-border);
+}
+
+.panel-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.data-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F5F8;
+}
+
+.data-row:last-child { border-bottom: none; }
+
+.data-label {
+  font-size: 14px;
+  color: var(--c-muted);
+}
+
+.data-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.data-value.success { color: var(--c-ok); }
+
+.panel-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* Result state */
+.result-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.result-empty-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--c-light);
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+}
+
+.result-empty p {
+  color: var(--c-muted);
+  font-size: 15px;
+}
+
+.result-shown { animation: slideUp 500ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+.result-status {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 24px;
+  background: linear-gradient(135deg, rgba(2, 195, 154, 0.08) 0%, rgba(2, 195, 154, 0.02) 100%);
+  border: 1px solid rgba(2, 195, 154, 0.2);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+}
+
+.result-check {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(2, 195, 154, 0.3);
+}
+
+.result-text h3 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.result-text p {
+  color: var(--c-muted);
+  font-size: 14px;
+}
+
+.checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  font-size: 15px;
+  animation: slideUp 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.checklist li:nth-child(1) { animation-delay: 50ms; }
+.checklist li:nth-child(2) { animation-delay: 100ms; }
+.checklist li:nth-child(3) { animation-delay: 150ms; }
+.checklist li:nth-child(4) { animation-delay: 200ms; }
+.checklist li:nth-child(5) { animation-delay: 250ms; }
+
+.checklist-mark {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+/* ─── DOCUMENTOS ─────────────────────────────────────────── */
+
+.progress-bar-wrap {
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--c-border);
+  padding: 20px 28px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.progress-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-text);
+  white-space: nowrap;
+}
+
+.progress-track {
+  flex: 1;
+  height: 10px;
+  background: var(--c-light);
+  border-radius: 100px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(90deg, var(--c-accent), #00d6a8);
+  border-radius: 100px;
+  transition: width 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  to { transform: translateX(200%); }
+}
+
+.progress-count {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--c-accent);
+  white-space: nowrap;
+}
+
+.docs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 32px;
+}
+
+.doc-list { display: flex; flex-direction: column; gap: 10px; }
+
+.doc-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: white;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.doc-item:hover {
+  border-color: var(--c-med);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.doc-item.sent {
+  background: linear-gradient(90deg, rgba(2, 195, 154, 0.04) 0%, transparent 100%);
+  border-color: rgba(2, 195, 154, 0.2);
+}
+
+.doc-item.active {
+  border-color: var(--c-accent);
+  background: var(--c-white);
+  box-shadow: 0 0 0 3px rgba(2, 195, 154, 0.15);
+}
+
+.doc-check {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.doc-check.done { background: var(--c-accent); color: white; }
+.doc-check.pending {
+  background: white;
+  border: 1.5px solid var(--c-border);
+  color: var(--c-muted);
+}
+
+.doc-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.doc-item.sent .doc-name { color: var(--c-muted); }
+
+.doc-status {
+  font-size: 12px;
+  color: var(--c-ok);
+  font-weight: 600;
+}
+
+.doc-status.pending {
+  color: var(--c-muted);
+}
+
+.doc-status.pending::after {
+  content: ' →';
+  color: var(--c-accent);
+}
+
+/* Upload area */
+.upload-panel { background: white; border-radius: var(--radius-lg); border: 1px solid var(--c-border); padding: 36px; }
+
+.upload-header { margin-bottom: 24px; }
+
+.upload-meta { font-size: 13px; color: var(--c-muted); }
+
+.dropzone {
+  border: 2px dashed var(--c-border);
+  border-radius: var(--radius-lg);
+  padding: 56px 32px;
+  text-align: center;
+  transition: var(--transition);
+  cursor: pointer;
+  background: linear-gradient(180deg, transparent 0%, var(--c-light) 100%);
+}
+
+.dropzone:hover, .dropzone.dragover {
+  border-color: var(--c-accent);
+  background: linear-gradient(180deg, rgba(2, 195, 154, 0.04) 0%, rgba(2, 195, 154, 0.08) 100%);
+}
+
+.dropzone-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--c-light);
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  color: var(--c-dark);
+  transition: var(--transition);
+}
+
+.dropzone:hover .dropzone-icon {
+  background: var(--c-accent);
+  color: white;
+  transform: translateY(-4px);
+}
+
+.dropzone-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--c-text);
+  margin-bottom: 8px;
+}
+
+.dropzone-hint {
+  font-size: 13px;
+  color: var(--c-muted);
+  margin-bottom: 20px;
+}
+
+.validation-list {
+  background: var(--c-light);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.validation-list h4 {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+  margin-bottom: 12px;
+}
+
+.validation-list ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.validation-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--c-text);
+}
+
+.validation-list li::before {
+  content: '•';
+  color: var(--c-accent);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* ─── STATUS ─────────────────────────────────────────────── */
+
+.status-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 32px;
+  padding: 48px 0 100px;
+}
+
+.timeline-wrap {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  padding: 40px 36px;
+  margin-bottom: 32px;
+}
+
+.timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 32px 0;
+  padding: 0 20px;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: 38px;
+  right: 38px;
+  height: 2px;
+  background: var(--c-border);
+  z-index: 0;
+}
+
+.timeline-fill {
+  position: absolute;
+  top: 18px;
+  left: 38px;
+  height: 2px;
+  background: var(--c-accent);
+  z-index: 1;
+  width: 42%;
+  transition: width 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.timeline-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  flex: 1;
+}
+
+.timeline-dot {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--c-border);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c-muted);
+  transition: var(--transition);
+}
+
+.timeline-step.done .timeline-dot {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+  color: white;
+}
+
+.timeline-step.current .timeline-dot {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+  box-shadow: 0 0 0 4px rgba(2, 195, 154, 0.2);
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(2, 195, 154, 0.2); }
+  50% { box-shadow: 0 0 0 8px rgba(2, 195, 154, 0.1); }
+}
+
+.timeline-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--c-muted);
+  max-width: 80px;
+  line-height: 1.3;
+}
+
+.timeline-step.done .timeline-name,
+.timeline-step.current .timeline-name {
+  color: var(--c-text);
+  font-weight: 600;
+}
+
+.current-stage-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--c-accent);
+  padding: 32px;
+  position: relative;
+}
+
+.current-stage-card::before {
+  content: 'ATUAL';
+  position: absolute;
+  top: -10px;
+  left: 24px;
+  padding: 4px 12px;
+  background: var(--c-accent);
+  color: white;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  border-radius: 100px;
+}
+
+.stage-title { font-size: 22px; margin-bottom: 8px; }
+.stage-desc { color: var(--c-muted); font-size: 15px; margin-bottom: 24px; }
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+.event-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  position: relative;
+}
+
+.event-item:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 28px;
+  bottom: -16px;
+  width: 1px;
+  background: var(--c-border);
+}
+
+.event-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--c-dark);
+  flex-shrink: 0;
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.event-info { flex: 1; }
+.event-date {
+  font-size: 12px;
+  color: var(--c-muted);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.event-text { font-size: 14px; color: var(--c-text); font-weight: 500; }
+
+.summary-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  padding: 32px;
+  position: sticky;
+  top: 100px;
+}
+
+.summary-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F5F8;
+}
+
+.summary-item:last-child { border-bottom: none; }
+
+.summary-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.summary-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--c-text);
+}
+
+.summary-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn-block { width: 100%; justify-content: center; }
+
+/* ─── NOTIFICAÇÕES ───────────────────────────────────────── */
+
+.notif-list { display: flex; flex-direction: column; gap: 12px; }
+
+.notif-item {
+  display: flex;
+  gap: 18px;
+  padding: 22px 24px;
+  background: white;
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.notif-item:hover {
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.notif-item.unread {
+  background: linear-gradient(90deg, rgba(2, 195, 154, 0.04) 0%, transparent 50%);
+  border-left: 3px solid var(--c-accent);
+}
+
+.notif-icon {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-md);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.notif-icon.info { background: var(--c-light); color: var(--c-dark); }
+.notif-icon.success { background: rgba(2, 195, 154, 0.12); color: var(--c-ok); }
+.notif-icon.warn { background: rgba(230, 126, 34, 0.12); color: var(--c-warn2); }
+
+.notif-content { flex: 1; }
+.notif-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.notif-text { font-size: 14px; color: var(--c-muted); line-height: 1.5; }
+.notif-time { font-size: 12px; color: var(--c-muted); margin-top: 8px; }
+
+.notif-prefs {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  padding: 28px;
+  margin-top: 32px;
+}
+
+.notif-prefs h3 { font-size: 18px; margin-bottom: 20px; }
+
+.pref-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #F0F5F8;
+}
+
+.pref-row:last-child { border-bottom: none; }
+.pref-label { font-size: 14px; font-weight: 500; }
+.pref-desc { font-size: 13px; color: var(--c-muted); }
+
+.toggle {
+  width: 44px; height: 26px;
+  background: var(--c-border);
+  border-radius: 100px;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 20px; height: 20px;
+  background: white;
+  border-radius: 50%;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.toggle.active { background: var(--c-accent); }
+.toggle.active::after { left: 21px; }
+
+/* ─── PAINEL NEI ─────────────────────────────────────────── */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.kpi-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  padding: 28px;
+  transition: var(--transition);
+}
+
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.kpi-label {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+  margin-bottom: 12px;
+}
+
+.kpi-number {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 600;
+  color: var(--c-dark);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.kpi-trend {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.kpi-trend.up { color: var(--c-ok); }
+.kpi-trend.flat { color: var(--c-muted); }
+
+.admin-table-wrap {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--c-border);
+  overflow: hidden;
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--c-border);
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.table-title { font-size: 18px; font-weight: 600; color: var(--c-dark); }
+
+.filter-group { display: flex; gap: 8px; }
+
+.filter-chip {
+  padding: 8px 14px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  background: var(--c-light);
+  color: var(--c-muted);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.filter-chip:hover { background: #d8eaf2; color: var(--c-dark); }
+
+.filter-chip.active {
+  background: var(--c-dark);
+  color: white;
+}
+
+.admin-table { width: 100%; border-collapse: collapse; }
+
+.admin-table thead {
+  background: var(--c-light);
+}
+
+.admin-table th {
+  padding: 14px 28px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--c-muted);
+}
+
+.admin-table td {
+  padding: 18px 28px;
+  font-size: 14px;
+  border-bottom: 1px solid #F0F5F8;
+}
+
+.admin-table tbody tr {
+  transition: background var(--transition);
+  cursor: pointer;
+}
+
+.admin-table tbody tr:hover { background: #FAFCFD; }
+.admin-table tbody tr:last-child td { border-bottom: none; }
+
+.student-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.student-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-dark), var(--c-med));
+  color: var(--c-accent);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.student-name { font-weight: 600; }
+.student-course { font-size: 12px; color: var(--c-muted); }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pending { background: rgba(230, 126, 34, 0.12); color: var(--c-warn2); }
+.badge-review { background: rgba(28, 114, 147, 0.12); color: var(--c-med); }
+.badge-approved { background: rgba(2, 195, 154, 0.15); color: var(--c-ok); }
+
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.table-action {
+  padding: 6px 12px;
+  background: var(--c-light);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-dark);
+  transition: var(--transition);
+}
+
+.table-action:hover {
+  background: var(--c-dark);
+  color: white;
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+
+.footer {
+  background: var(--c-dark);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 60px 0 40px;
+  margin-top: 80px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand .brand-mark { box-shadow: none; }
+.footer-brand .brand-name { color: white; }
+.footer-brand .brand-tag { color: rgba(255, 255, 255, 0.4); }
+
+.footer-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 320px;
+  margin-top: 20px;
+}
+
+.footer-col h4 {
+  color: white;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.footer-col a {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition);
+}
+
+.footer-col a:hover { color: var(--c-accent); }
+
+.footer-bottom {
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ─── RESPONSIVO ─────────────────────────────────────────── */
+
+@media (max-width: 980px) {
+  .nav { display: none; }
+  .user-chip { display: none; }
+  .mobile-menu-btn { display: flex; }
+
+  .container { padding: 0 20px; }
+  .header-inner { padding: 14px 20px; }
+
+  .hero { padding: 60px 0 80px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+
+  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 0; padding: 32px 0; }
+  .stat { padding: 0 20px; }
+  .stat:nth-child(odd) { border-left: none; }
+  .stat:nth-child(3) { border-left: none; }
+
+  .section { padding: 60px 0; }
+  .section-header { flex-direction: column; align-items: flex-start; gap: 16px; margin-bottom: 40px; }
+  .steps-grid, .destinations-grid { grid-template-columns: 1fr; }
+  .step-card, .dest-card { padding: 28px; }
+
+  .elegi-grid { grid-template-columns: 1fr; padding: 32px 0 60px; }
+  .panel { padding: 28px; }
+
+  .docs-grid { grid-template-columns: 1fr; }
+  .progress-bar-wrap { flex-direction: column; align-items: stretch; gap: 12px; padding: 18px 22px; }
+
+  .status-grid { grid-template-columns: 1fr; padding: 32px 0 60px; }
+  .timeline { flex-wrap: wrap; gap: 24px 0; padding: 0; }
+  .timeline::before, .timeline-fill { display: none; }
+  .timeline-step { flex-direction: row; align-items: center; flex: 0 0 50%; justify-content: flex-start; padding-left: 8px; }
+  .timeline-name { max-width: none; text-align: left; font-size: 13px; }
+  .summary-card { position: static; }
+
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .table-toolbar { flex-direction: column; align-items: flex-start; }
+  .admin-table { display: block; overflow-x: auto; white-space: nowrap; }
+
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .page-header { padding: 40px 0 32px; }
+}
+
+@media (max-width: 560px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .timeline-step { flex: 0 0 100%; }
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn { justify-content: center; }
+}
+
+/* Mobile drawer */
+.mobile-drawer {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 90, 130, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition);
+}
+
+.mobile-drawer.open { opacity: 1; pointer-events: auto; }
+
+.mobile-drawer-content {
+  position: absolute;
+  top: 0; right: 0;
+  width: 280px;
+  height: 100%;
+  background: white;
+  padding: 80px 24px 24px;
+  transform: translateX(100%);
+  transition: transform var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-drawer.open .mobile-drawer-content { transform: translateX(0); }
+
+.mobile-drawer .nav-btn {
+  text-align: left;
+  font-size: 15px;
+  padding: 14px 16px;
+}
+
+.mobile-drawer-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  background: var(--c-light);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER
+     ═══════════════════════════════════════════════════════════ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="brand" onclick="navigate('home')">
+      <div class="brand-mark">G</div>
+      <div class="brand-text">
+        <span class="brand-name">GlobalConnect</span>
+        <span class="brand-tag">Unifor · Mobilidade Internacional</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-btn active" data-screen="home" onclick="navigate('home')">Início</button>
+      <button class="nav-btn" data-screen="elegibilidade" onclick="navigate('elegibilidade')">Elegibilidade</button>
+      <button class="nav-btn" data-screen="documentos" onclick="navigate('documentos')">Documentos</button>
+      <button class="nav-btn" data-screen="status" onclick="navigate('status')">Status</button>
+      <button class="nav-btn" data-screen="notificacoes" onclick="navigate('notificacoes')">Notificações</button>
+      <button class="nav-btn" data-screen="nei" onclick="navigate('nei')">Painel NEI</button>
+    </nav>
+
+    <div class="user-chip">
+      <div class="user-avatar">L</div>
+      <span class="user-name">Lucas A.</span>
+    </div>
+
+    <button class="mobile-menu-btn" onclick="toggleDrawer(true)" aria-label="Abrir menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="mobile-drawer" id="drawer" onclick="if(event.target===this)toggleDrawer(false)">
+  <div class="mobile-drawer-content">
+    <button class="mobile-drawer-close" onclick="toggleDrawer(false)">✕</button>
+    <button class="nav-btn active" data-screen="home" onclick="navigate('home'); toggleDrawer(false)">Início</button>
+    <button class="nav-btn" data-screen="elegibilidade" onclick="navigate('elegibilidade'); toggleDrawer(false)">Elegibilidade</button>
+    <button class="nav-btn" data-screen="documentos" onclick="navigate('documentos'); toggleDrawer(false)">Documentos</button>
+    <button class="nav-btn" data-screen="status" onclick="navigate('status'); toggleDrawer(false)">Status</button>
+    <button class="nav-btn" data-screen="notificacoes" onclick="navigate('notificacoes'); toggleDrawer(false)">Notificações</button>
+    <button class="nav-btn" data-screen="nei" onclick="navigate('nei'); toggleDrawer(false)">Painel NEI</button>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     MAIN
+     ═══════════════════════════════════════════════════════════ -->
+<main>
+
+<!-- ─── HOME / PORTAL (US-01) ──────────────────────────────── -->
+<section class="screen active" id="home">
+  <div class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Inscrições abertas para 2026.2 — até 15/09
+          </div>
+          <h1>O mundo é<br>seu próximo <em>campus</em>.</h1>
+          <p class="hero-lead">A plataforma digital que conecta estudantes da Unifor a mais de 135 instituições parceiras em 30 países — do primeiro acesso ao aproveitamento de créditos no retorno.</p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="navigate('elegibilidade')">
+              Verificar elegibilidade
+              <span class="btn-arrow">→</span>
+            </button>
+            <button class="btn btn-outline">Explorar destinos</button>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span class="hero-card-title">Sua candidatura</span>
+              <span class="status-pill"><span class="status-pill-dot"></span> Em análise</span>
+            </div>
+            <div class="hero-steps">
+              <div class="hero-step">
+                <div class="hero-step-icon done">✓</div>
+                <div class="hero-step-info">
+                  <div class="hero-step-name">Inscrição</div>
+                  <div class="hero-step-meta">Concluída em 01/05</div>
+                </div>
+              </div>
+              <div class="hero-step">
+                <div class="hero-step-icon done">✓</div>
+                <div class="hero-step-info">
+                  <div class="hero-step-name">Documentos</div>
+                  <div class="hero-step-meta">Enviados em 08/05</div>
+                </div>
+              </div>
+              <div class="hero-step">
+                <div class="hero-step-icon active">•</div>
+                <div class="hero-step-info">
+                  <div class="hero-step-name">Análise NEI</div>
+                  <div class="hero-step-meta">Em andamento</div>
+                </div>
+              </div>
+              <div class="hero-step">
+                <div class="hero-step-icon pending">4</div>
+                <div class="hero-step-info">
+                  <div class="hero-step-name">Aceitação</div>
+                  <div class="hero-step-meta">Aguardando</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">135<em>+</em></div>
+          <div class="stat-label">Instituições parceiras no mundo todo</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">30</div>
+          <div class="stat-label">Países disponíveis para intercâmbio</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">100<em>%</em></div>
+          <div class="stat-label">Processo de candidatura digital</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">6m</div>
+          <div class="stat-label">Antecedência mínima para inscrição</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Como funciona</span>
+          <h2 class="section-title">Quatro etapas para <em>transformar</em> sua trajetória acadêmica.</h2>
+        </div>
+        <p class="section-sub">Um processo guiado, transparente e 100% digital — do primeiro acesso à sua experiência no exterior.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01 — Descubra</div>
+          <h3>Verifique sua elegibilidade</h3>
+          <p>O sistema cruza seu histórico acadêmico e mostra automaticamente se você atende aos pré-requisitos.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02 — Candidate</div>
+          <h3>Envie seus documentos</h3>
+          <p>Upload digital de todos os documentos exigidos, com validação automática de formato e progresso em tempo real.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03 — Acompanhe</div>
+          <h3>Veja o status em tempo real</h3>
+          <p>Timeline completa da sua candidatura, com notificações automáticas a cada etapa concluída.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">04 — Embarque</div>
+          <h3>Realize sua experiência</h3>
+          <p>Com a carta de aceitação, prepare-se para uma das experiências mais transformadoras da sua vida acadêmica.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <span class="section-eyebrow">Destinos em destaque</span>
+          <h2 class="section-title">Instituições parceiras <em>pelo mundo</em>.</h2>
+        </div>
+        <p class="section-sub">Filtre por curso, país ou idioma para encontrar a universidade ideal para seu intercâmbio.</p>
+      </div>
+
+      <div class="destinations-grid">
+        <div class="dest-card">
+          <div class="dest-image dest-image-1"><span class="dest-flag">🇪🇸 Espanha</span></div>
+          <div class="dest-info">
+            <div class="dest-name">Universidade de Salamanca</div>
+            <div class="dest-city">Salamanca · Castela e Leão</div>
+            <div class="dest-meta">
+              <span class="dest-meta-item">Espanhol B2</span>
+              <span class="dest-meta-item">·</span>
+              <span class="dest-meta-item">12 vagas</span>
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-image dest-image-2"><span class="dest-flag">🇵🇹 Portugal</span></div>
+          <div class="dest-info">
+            <div class="dest-name">Universidade de Lisboa</div>
+            <div class="dest-city">Lisboa · Região de Lisboa</div>
+            <div class="dest-meta">
+              <span class="dest-meta-item">Português nativo</span>
+              <span class="dest-meta-item">·</span>
+              <span class="dest-meta-item">20 vagas</span>
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-image dest-image-3"><span class="dest-flag">🇩🇪 Alemanha</span></div>
+          <div class="dest-info">
+            <div class="dest-name">Deggendorf Institute of Technology</div>
+            <div class="dest-city">Deggendorf · Baviera</div>
+            <div class="dest-meta">
+              <span class="dest-meta-item">Inglês B2</span>
+              <span class="dest-meta-item">·</span>
+              <span class="dest-meta-item">8 vagas</span>
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-image dest-image-4"><span class="dest-flag">🇺🇸 EUA</span></div>
+          <div class="dest-info">
+            <div class="dest-name">University of Arizona</div>
+            <div class="dest-city">Tucson · Arizona</div>
+            <div class="dest-meta">
+              <span class="dest-meta-item">Inglês C1</span>
+              <span class="dest-meta-item">·</span>
+              <span class="dest-meta-item">6 vagas</span>
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-image dest-image-5"><span class="dest-flag">🇨🇦 Canadá</span></div>
+          <div class="dest-info">
+            <div class="dest-name">Concordia University</div>
+            <div class="dest-city">Montreal · Quebec</div>
+            <div class="dest-meta">
+              <span class="dest-meta-item">Inglês ou Francês B2</span>
+              <span class="dest-meta-item">·</span>
+              <span class="dest-meta-item">10 vagas</span>
+            </div>
+          </div>
+        </div>
+        <div class="dest-card">
+          <div class="dest-image dest-image-6"><span class="dest-flag">🇮🇹 Itália</span></div>
+          <div class="dest-info">
+            <div class="dest-name">Università di Bologna</div>
+            <div class="dest-city">Bolonha · Emilia-Romagna</div>
+            <div class="dest-meta">
+              <span class="dest-meta-item">Italiano B1</span>
+              <span class="dest-meta-item">·</span>
+              <span class="dest-meta-item">15 vagas</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ELEGIBILIDADE (US-02) ──────────────────────────────── -->
+<section class="screen" id="elegibilidade">
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="navigate('home')">Início</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Verificação de Elegibilidade</span>
+      </div>
+      <h1 class="page-title">Verificação de <em>Elegibilidade</em></h1>
+      <p class="page-sub">Cruzamos seu histórico acadêmico automaticamente para mostrar se você atende aos pré-requisitos do programa de intercâmbio. Sem ir presencialmente ao NEI.</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="elegi-grid">
+      <div class="panel">
+        <div class="panel-header">
+          <h2 class="panel-title">Seus dados acadêmicos</h2>
+          <span class="status-pill" style="background: var(--c-light); color: var(--c-med);">
+            <span class="status-pill-dot" style="background: var(--c-med);"></span>
+            Carregados do SCA
+          </span>
+        </div>
+
+        <div class="data-row">
+          <span class="data-label">Curso</span>
+          <span class="data-value">Análise e Desenv. de Sistemas</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Semestre atual</span>
+          <span class="data-value">5º semestre</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Progresso do curso</span>
+          <span class="data-value success">53% concluído</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Média global</span>
+          <span class="data-value success">8,2</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Disciplinas reprovadas</span>
+          <span class="data-value success">0</span>
+        </div>
+        <div class="data-row">
+          <span class="data-label">Idioma declarado</span>
+          <span class="data-value">Inglês — Intermediário</span>
+        </div>
+
+        <div class="panel-actions">
+          <button class="btn btn-dark" onclick="verificarElegibilidade()">
+            Verificar elegibilidade
+            <span class="btn-arrow">→</span>
+          </button>
+          <button class="btn btn-ghost">Editar dados</button>
+        </div>
+      </div>
+
+      <div class="panel" id="resultPanel">
+        <div class="panel-header">
+          <h2 class="panel-title">Resultado da análise</h2>
+        </div>
+        <div class="result-empty" id="resultEmpty">
+          <div class="result-empty-icon">⏳</div>
+          <p>Clique em "Verificar elegibilidade" para analisar automaticamente seu histórico acadêmico.</p>
+        </div>
+        <div class="result-shown" id="resultShown" style="display: none;">
+          <div class="result-status">
+            <div class="result-check">✓</div>
+            <div class="result-text">
+              <h3>Você está apto!</h3>
+              <p>Atende a todos os 5 pré-requisitos do programa</p>
+            </div>
+          </div>
+          <ul class="checklist">
+            <li><span class="checklist-mark">✓</span> Matrícula ativa na Unifor</li>
+            <li><span class="checklist-mark">✓</span> Entre 30% e 70% do curso concluído</li>
+            <li><span class="checklist-mark">✓</span> Média global ≥ 7,0</li>
+            <li><span class="checklist-mark">✓</span> Nenhuma disciplina reprovada</li>
+            <li><span class="checklist-mark">✓</span> Idioma declarado</li>
+          </ul>
+          <div class="panel-actions">
+            <button class="btn btn-primary" onclick="navigate('documentos')">
+              Iniciar candidatura
+              <span class="btn-arrow">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DOCUMENTOS (US-03 + US-04) ─────────────────────────── -->
+<section class="screen" id="documentos">
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="navigate('home')">Início</a>
+        <span class="breadcrumb-sep">/</span>
+        <a onclick="navigate('status')">Minha candidatura</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Documentos</span>
+      </div>
+      <h1 class="page-title">Envio de <em>Documentos</em></h1>
+      <p class="page-sub">Anexe cada documento exigido. O sistema valida o formato automaticamente. Você pode substituir qualquer documento antes da análise oficial pelo NEI.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding-top: 48px; padding-bottom: 100px;">
+    <div class="progress-bar-wrap">
+      <span class="progress-label">Progresso da candidatura</span>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <span class="progress-count" id="progressCount">6 de 10 documentos</span>
+    </div>
+
+    <div class="docs-grid">
+      <div class="doc-list">
+        <div class="doc-item sent">
+          <div class="doc-check done">✓</div>
+          <span class="doc-name">Formulário de inscrição Unifor</span>
+          <span class="doc-status">Enviado</span>
+        </div>
+        <div class="doc-item sent">
+          <div class="doc-check done">✓</div>
+          <span class="doc-name">Formulário da universidade destino</span>
+          <span class="doc-status">Enviado</span>
+        </div>
+        <div class="doc-item sent">
+          <div class="doc-check done">✓</div>
+          <span class="doc-name">Carta de recomendação</span>
+          <span class="doc-status">Enviado</span>
+        </div>
+        <div class="doc-item sent">
+          <div class="doc-check done">✓</div>
+          <span class="doc-name">Carta de motivação</span>
+          <span class="doc-status">Enviado</span>
+        </div>
+        <div class="doc-item sent">
+          <div class="doc-check done">✓</div>
+          <span class="doc-name">Três fotos 3x4</span>
+          <span class="doc-status">Enviado</span>
+        </div>
+        <div class="doc-item sent">
+          <div class="doc-check done">✓</div>
+          <span class="doc-name">Cópia do passaporte</span>
+          <span class="doc-status">Enviado</span>
+        </div>
+        <div class="doc-item active">
+          <div class="doc-check pending">7</div>
+          <span class="doc-name">Curriculum Vitae</span>
+          <span class="doc-status pending">Enviar</span>
+        </div>
+        <div class="doc-item">
+          <div class="doc-check pending">8</div>
+          <span class="doc-name">Histórico com tradução juramentada</span>
+          <span class="doc-status pending">Enviar</span>
+        </div>
+        <div class="doc-item">
+          <div class="doc-check pending">9</div>
+          <span class="doc-name">Termo de responsabilidade</span>
+          <span class="doc-status pending">Enviar</span>
+        </div>
+        <div class="doc-item">
+          <div class="doc-check pending">10</div>
+          <span class="doc-name">Comprovante de proficiência</span>
+          <span class="doc-status pending">Enviar</span>
+        </div>
+      </div>
+
+      <div class="upload-panel">
+        <div class="upload-header">
+          <h2 class="panel-title">Curriculum Vitae</h2>
+          <p class="upload-meta">PDF · máx. 5 MB · em inglês</p>
+        </div>
+        <div class="dropzone" id="dropzone" onclick="simularUpload()">
+          <div class="dropzone-icon">↑</div>
+          <div class="dropzone-text">Arraste o arquivo aqui</div>
+          <div class="dropzone-hint">ou clique para selecionar do computador</div>
+          <button class="btn btn-ghost" onclick="event.stopPropagation(); simularUpload()">Selecionar arquivo</button>
+        </div>
+
+        <div class="validation-list">
+          <h4>Validação automática</h4>
+          <ul>
+            <li>Formato PDF aceito</li>
+            <li>Tamanho máximo de 5 MB</li>
+            <li>Identificação do idioma do documento</li>
+          </ul>
+        </div>
+
+        <div class="panel-actions" style="margin-top: 28px;">
+          <button class="btn btn-ghost">← Voltar</button>
+          <button class="btn btn-primary" style="margin-left: auto;" onclick="navigate('status')">
+            Salvar e próximo
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── STATUS (US-05) ─────────────────────────────────────── -->
+<section class="screen" id="status">
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="navigate('home')">Início</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Minha candidatura</span>
+      </div>
+      <h1 class="page-title">Status da <em>Candidatura</em></h1>
+      <p class="page-sub">Universidade de Salamanca · Espanha · Semestre 2026.2</p>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="status-grid">
+      <div>
+        <div class="timeline-wrap">
+          <h2 class="panel-title" style="margin-bottom: 8px;">Etapas do processo</h2>
+          <p style="font-size: 14px; color: var(--c-muted); margin-bottom: 24px;">Acompanhe em tempo real cada fase da sua candidatura.</p>
+          <div class="timeline">
+            <div class="timeline-fill"></div>
+            <div class="timeline-step done">
+              <div class="timeline-dot">✓</div>
+              <span class="timeline-name">Inscrição</span>
+            </div>
+            <div class="timeline-step done">
+              <div class="timeline-dot">✓</div>
+              <span class="timeline-name">Documentos</span>
+            </div>
+            <div class="timeline-step done">
+              <div class="timeline-dot">✓</div>
+              <span class="timeline-name">Análise NEI</span>
+            </div>
+            <div class="timeline-step current">
+              <div class="timeline-dot">4</div>
+              <span class="timeline-name">Envio à parceira</span>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-dot">5</div>
+              <span class="timeline-name">Aceitação</span>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-dot">6</div>
+              <span class="timeline-name">Visto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="current-stage-card">
+          <h3 class="stage-title">Envio à parceira</h3>
+          <p class="stage-desc">Sua candidatura está sendo enviada à Universidade de Salamanca. Você será notificado assim que houver atualização da instituição.</p>
+
+          <h4 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--c-muted); margin-bottom: 12px; font-weight: 600;">Histórico de eventos</h4>
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-dot"></div>
+              <div class="event-info">
+                <div class="event-date">12/05/2026 · 14:32</div>
+                <div class="event-text">Documentação aprovada pelo NEI</div>
+              </div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot"></div>
+              <div class="event-info">
+                <div class="event-date">10/05/2026 · 09:15</div>
+                <div class="event-text">Análise iniciada pela equipe do NEI</div>
+              </div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot"></div>
+              <div class="event-info">
+                <div class="event-date">08/05/2026 · 18:40</div>
+                <div class="event-text">Todos os documentos enviados</div>
+              </div>
+            </div>
+            <div class="event-item">
+              <div class="event-dot"></div>
+              <div class="event-info">
+                <div class="event-date">01/05/2026 · 10:00</div>
+                <div class="event-text">Inscrição realizada com sucesso</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="summary-card">
+        <h3 style="font-size: 18px; margin-bottom: 24px;">Resumo</h3>
+        <div class="summary-item">
+          <div class="summary-label">Destino</div>
+          <div class="summary-value">Universidade de Salamanca</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">País</div>
+          <div class="summary-value">Espanha · Castela e Leão</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Período</div>
+          <div class="summary-value">Ago–Dez 2026</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Coordenador</div>
+          <div class="summary-value">Prof. Ricardo Melo</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Status atual</div>
+          <div class="summary-value" style="color: var(--c-warn2);">Em análise pela parceira</div>
+        </div>
+        <div class="summary-actions">
+          <button class="btn btn-dark btn-block">💬 Falar com NEI</button>
+          <button class="btn btn-ghost btn-block">📥 Baixar comprovante</button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NOTIFICAÇÕES (US-06) ───────────────────────────────── -->
+<section class="screen" id="notificacoes">
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="navigate('home')">Início</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Notificações</span>
+      </div>
+      <h1 class="page-title">Suas <em>Notificações</em></h1>
+      <p class="page-sub">Receba atualizações automáticas sobre prazos, status da candidatura e mensagens do NEI — por e-mail, push e WhatsApp.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 48px 32px 100px; max-width: 880px;">
+    <div class="notif-list">
+      <div class="notif-item unread">
+        <div class="notif-icon success">✓</div>
+        <div class="notif-content">
+          <div class="notif-title">Documentação aprovada pelo NEI</div>
+          <div class="notif-text">Sua candidatura foi aprovada pela equipe do NEI e será encaminhada à Universidade de Salamanca nas próximas horas.</div>
+          <div class="notif-time">Há 2 horas · 12/05/2026 14:32</div>
+        </div>
+      </div>
+
+      <div class="notif-item unread">
+        <div class="notif-icon warn">!</div>
+        <div class="notif-content">
+          <div class="notif-title">Prazo de envio se aproxima</div>
+          <div class="notif-text">Restam 7 dias para o envio do Comprovante de Proficiência. Sem esse documento, sua candidatura não será encaminhada.</div>
+          <div class="notif-time">Há 6 horas · 12/05/2026 11:00</div>
+        </div>
+      </div>
+
+      <div class="notif-item">
+        <div class="notif-icon info">i</div>
+        <div class="notif-content">
+          <div class="notif-title">Reunião pré-embarque agendada</div>
+          <div class="notif-text">A reunião pré-embarque para o ciclo 2026.2 está agendada para 28/06/2026 às 14h. Local: 1º andar da Reitoria.</div>
+          <div class="notif-time">Ontem · 11/05/2026 16:20</div>
+        </div>
+      </div>
+
+      <div class="notif-item">
+        <div class="notif-icon success">✓</div>
+        <div class="notif-content">
+          <div class="notif-title">Documento "Carta de motivação" recebido</div>
+          <div class="notif-text">Recebemos seu documento e ele está em conformidade com os requisitos. Você pode prosseguir com os próximos.</div>
+          <div class="notif-time">2 dias atrás · 10/05/2026 09:45</div>
+        </div>
+      </div>
+
+      <div class="notif-item">
+        <div class="notif-icon info">i</div>
+        <div class="notif-content">
+          <div class="notif-title">Bem-vindo ao GlobalConnect Unifor</div>
+          <div class="notif-text">Sua conta foi criada com sucesso. Comece verificando sua elegibilidade para o intercâmbio.</div>
+          <div class="notif-time">1 semana atrás · 05/05/2026 10:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="notif-prefs">
+      <h3>Preferências de notificação</h3>
+      <div class="pref-row">
+        <div>
+          <div class="pref-label">E-mail institucional</div>
+          <div class="pref-desc">matheus@edu.unifor.br</div>
+        </div>
+        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+      </div>
+      <div class="pref-row">
+        <div>
+          <div class="pref-label">Notificação no app</div>
+          <div class="pref-desc">Push em tempo real para iOS e Android</div>
+        </div>
+        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+      </div>
+      <div class="pref-row">
+        <div>
+          <div class="pref-label">WhatsApp</div>
+          <div class="pref-desc">Mensagens automáticas sobre prazos críticos</div>
+        </div>
+        <div class="toggle active" onclick="this.classList.toggle('active')"></div>
+      </div>
+      <div class="pref-row">
+        <div>
+          <div class="pref-label">SMS</div>
+          <div class="pref-desc">Apenas para alertas urgentes</div>
+        </div>
+        <div class="toggle" onclick="this.classList.toggle('active')"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PAINEL NEI (US-07) ─────────────────────────────────── -->
+<section class="screen" id="nei">
+  <div class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="navigate('home')">Início</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>Área administrativa NEI</span>
+      </div>
+      <h1 class="page-title">Painel do <em>NEI</em></h1>
+      <p class="page-sub">Gerencie todas as candidaturas ativas, documentos enviados e parcerias institucionais a partir de um único lugar.</p>
+    </div>
+  </div>
+
+  <div class="container" style="padding: 48px 32px 100px;">
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Candidaturas ativas</div>
+        <div class="kpi-number">142</div>
+        <div class="kpi-trend up">↑ 12 nesta semana</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Pendentes de análise</div>
+        <div class="kpi-number">38</div>
+        <div class="kpi-trend up">↑ 5 nas últimas 24h</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Aprovadas (mês)</div>
+        <div class="kpi-number">87</div>
+        <div class="kpi-trend up">↑ 18% vs. abril</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">Parceiras ativas</div>
+        <div class="kpi-number">135</div>
+        <div class="kpi-trend flat">→ Sem alteração</div>
+      </div>
+    </div>
+
+    <div class="admin-table-wrap">
+      <div class="table-toolbar">
+        <div class="table-title">Candidaturas em análise</div>
+        <div class="filter-group">
+          <button class="filter-chip active">Todas</button>
+          <button class="filter-chip">Pendentes</button>
+          <button class="filter-chip">Em análise</button>
+          <button class="filter-chip">Aprovadas</button>
+        </div>
+      </div>
+
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>Estudante</th>
+            <th>Curso</th>
+            <th>Destino</th>
+            <th>Status</th>
+            <th>Última atualização</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="student-cell">
+                <div class="student-avatar">LA</div>
+                <div>
+                  <div class="student-name">Lucas Almeida</div>
+                  <div class="student-course">Mat. 2023.1.05.0142</div>
+                </div>
+              </div>
+            </td>
+            <td>ADS</td>
+            <td>Salamanca · Espanha</td>
+            <td><span class="badge badge-review"><span class="badge-dot"></span> Em análise</span></td>
+            <td>12/05/2026 14:32</td>
+            <td><button class="table-action">Abrir</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-cell">
+                <div class="student-avatar">GA</div>
+                <div>
+                  <div class="student-name">Guilherme Almeida</div>
+                  <div class="student-course">Mat. 2023.1.05.0118</div>
+                </div>
+              </div>
+            </td>
+            <td>ADS</td>
+            <td>Lisboa · Portugal</td>
+            <td><span class="badge badge-pending"><span class="badge-dot"></span> Documentos</span></td>
+            <td>12/05/2026 10:18</td>
+            <td><button class="table-action">Abrir</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-cell">
+                <div class="student-avatar">TM</div>
+                <div>
+                  <div class="student-name">Thiago Menezes</div>
+                  <div class="student-course">Mat. 2023.1.05.0156</div>
+                </div>
+              </div>
+            </td>
+            <td>ADS</td>
+            <td>Bolonha · Itália</td>
+            <td><span class="badge badge-approved"><span class="badge-dot"></span> Aprovada</span></td>
+            <td>11/05/2026 17:55</td>
+            <td><button class="table-action">Abrir</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-cell">
+                <div class="student-avatar">MF</div>
+                <div>
+                  <div class="student-name">Mariana Furtado</div>
+                  <div class="student-course">Mat. 2022.2.03.0211</div>
+                </div>
+              </div>
+            </td>
+            <td>Administração</td>
+            <td>Tucson · EUA</td>
+            <td><span class="badge badge-review"><span class="badge-dot"></span> Em análise</span></td>
+            <td>11/05/2026 09:00</td>
+            <td><button class="table-action">Abrir</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-cell">
+                <div class="student-avatar">AB</div>
+                <div>
+                  <div class="student-name">Ana Beatriz Costa</div>
+                  <div class="student-course">Mat. 2024.1.01.0078</div>
+                </div>
+              </div>
+            </td>
+            <td>Direito</td>
+            <td>Montreal · Canadá</td>
+            <td><span class="badge badge-pending"><span class="badge-dot"></span> Documentos</span></td>
+            <td>10/05/2026 16:22</td>
+            <td><button class="table-action">Abrir</button></td>
+          </tr>
+          <tr>
+            <td>
+              <div class="student-cell">
+                <div class="student-avatar">LM</div>
+                <div>
+                  <div class="student-name">Lucas Mendonça</div>
+                  <div class="student-course">Mat. 2023.2.04.0192</div>
+                </div>
+              </div>
+            </td>
+            <td>Eng. Civil</td>
+            <td>Deggendorf · Alemanha</td>
+            <td><span class="badge badge-approved"><span class="badge-dot"></span> Aprovada</span></td>
+            <td>09/05/2026 11:40</td>
+            <td><button class="table-action">Abrir</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+     ═══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">G</div>
+          <div class="brand-text">
+            <span class="brand-name">GlobalConnect</span>
+            <span class="brand-tag">Unifor · Mobilidade Internacional</span>
+          </div>
+        </div>
+        <p class="footer-desc">Plataforma digital de gestão da mobilidade acadêmica internacional da Universidade de Fortaleza. Tornando o intercâmbio acessível, transparente e mensurável.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <ul>
+          <li><a onclick="navigate('elegibilidade')">Elegibilidade</a></li>
+          <li><a onclick="navigate('documentos')">Documentos</a></li>
+          <li><a onclick="navigate('status')">Status</a></li>
+          <li><a onclick="navigate('notificacoes')">Notificações</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>NEI</h4>
+        <ul>
+          <li><a>Sobre o NEI</a></li>
+          <li><a>Instituições parceiras</a></li>
+          <li><a>Atendimento</a></li>
+          <li><a>international@unifor.br</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Projeto</h4>
+        <ul>
+          <li><a>ADS Unifor — 2026.1</a></li>
+          <li><a>Requisitos e Modelagem</a></li>
+          <li><a href="https://github.com/matheusabporto/globalconnect-unifor">GitHub</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 GlobalConnect Unifor · Protótipo acadêmico (E8)</span>
+      <span>Versão MVP 0.8.0</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// NAVEGAÇÃO ENTRE TELAS
+// ═══════════════════════════════════════════════════════════
+
+function navigate(screenId) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById(screenId);
+  if (target) target.classList.add('active');
+
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.screen === screenId);
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════════════════════
+// MOBILE DRAWER
+// ═══════════════════════════════════════════════════════════
+
+function toggleDrawer(open) {
+  const drawer = document.getElementById('drawer');
+  drawer.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+// ═══════════════════════════════════════════════════════════
+// VERIFICAÇÃO DE ELEGIBILIDADE
+// ═══════════════════════════════════════════════════════════
+
+function verificarElegibilidade() {
+  const empty = document.getElementById('resultEmpty');
+  const shown = document.getElementById('resultShown');
+
+  // Simula um pequeno loading
+  empty.innerHTML = '<div class="result-empty-icon" style="background: var(--c-light); animation: dotPulse 1s ease-in-out infinite;">⚙️</div><p>Analisando seu histórico acadêmico…</p>';
+
+  setTimeout(() => {
+    empty.style.display = 'none';
+    shown.style.display = 'block';
+  }, 1200);
+}
+
+// ═══════════════════════════════════════════════════════════
+// UPLOAD SIMULADO
+// ═══════════════════════════════════════════════════════════
+
+function simularUpload() {
+  const dz = document.getElementById('dropzone');
+  const original = dz.innerHTML;
+
+  dz.innerHTML = `
+    <div class="dropzone-icon" style="background: var(--c-accent); color: white; animation: dotPulse 1.5s ease-in-out infinite;">↑</div>
+    <div class="dropzone-text">Enviando "CV_Lucas_Almeida.pdf"…</div>
+    <div class="dropzone-hint">Validando formato e idioma do documento</div>
+  `;
+
+  setTimeout(() => {
+    dz.innerHTML = `
+      <div class="dropzone-icon" style="background: var(--c-accent); color: white;">✓</div>
+      <div class="dropzone-text">Documento enviado com sucesso!</div>
+      <div class="dropzone-hint">CV_Lucas_Almeida.pdf · 2.4 MB · PDF</div>
+      <button class="btn btn-ghost" onclick="event.stopPropagation();">Substituir arquivo</button>
+    `;
+
+    // Atualiza progresso
+    document.getElementById('progressFill').style.width = '70%';
+    document.getElementById('progressCount').textContent = '7 de 10 documentos';
+
+    // Marca CV como enviado
+    const cvItem = document.querySelectorAll('.doc-item.active')[0];
+    if (cvItem) {
+      cvItem.classList.remove('active');
+      cvItem.classList.add('sent');
+      cvItem.querySelector('.doc-check').classList.remove('pending');
+      cvItem.querySelector('.doc-check').classList.add('done');
+      cvItem.querySelector('.doc-check').textContent = '✓';
+      cvItem.querySelector('.doc-status').classList.remove('pending');
+      cvItem.querySelector('.doc-status').textContent = 'Enviado';
+    }
+  }, 1800);
+}
+
+// ═══════════════════════════════════════════════════════════
+// INICIALIZAÇÃO
+// ═══════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Inicia progresso no documentos
+  setTimeout(() => {
+    const fill = document.getElementById('progressFill');
+    if (fill) fill.style.width = '60%';
+  }, 300);
+});
+</script>
+
+</body>
+</html>
